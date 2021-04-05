@@ -7,6 +7,7 @@
 
 import os
 
+# Adapted from https://stackoverflow.com/questions/1724693/find-a-file-in-python
 def find(name, path):
     for root, dirs, files in os.walk(path):
         if name in files:
