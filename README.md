@@ -2,10 +2,10 @@
 **Name:** Ingars Politers
 
 **Student ID:** G00374677
-
+___
 # Project Description
 This is a program in Python to build an NFA (Non-deterministic Finite Automaton) from a regular expression. The NFA then can be used to check if the regular expression has matched any given string of text.
-
+___
 # Instructions
 **Requirements:**
 * [Python 3](https://www.python.org/downloads)
@@ -24,6 +24,7 @@ python3 gtProject.py
 ```
 python gtProject.py
 ```
+___
 # Regular Expressions
 
 # Algorithms:
@@ -31,7 +32,7 @@ python gtProject.py
 ### Shunting Yard Algorithm
 
 ### Thompsons Construction
-
+___
 # Answers to follwing questions
 * ### What is Regular Expression ?
 
