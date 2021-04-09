@@ -1,5 +1,6 @@
 # Project: Graph Theory 2021
 **Name:** Ingars Politers
+
 **Student ID:** G00374677
 
 # Project Description
