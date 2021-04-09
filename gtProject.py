@@ -76,7 +76,13 @@ def compileNFA(infix):
         elif c == '*': 
             # Do stuff
         else:
-            # Do stuff
+            # Create an NFA for non-specail characters in c.
+            # create start and end state.
+            end, start = State(None, [], True), State(c, [], False)
+            # Point new start state at new end state.
+            start.arrows.append(end)
+            # Append the NFA to the NFA stack.
+            stack.append(NFA(start,end))
         # The NFA stack should only have one NFA on the stack.
         if len(stack) != 1:
             return None
