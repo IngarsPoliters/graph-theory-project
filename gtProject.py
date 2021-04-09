@@ -6,7 +6,7 @@ def shunt(infix):
     """Shunt Function - Convert Infix expression to Postfix"""
     # postfix - The eventual output.
     # stack - The shunting yard operator stack.
-    postfix, stack = ""
+    postfix, stack = "", ""
     # The operator precedence.
     precedence = {'*': 100, '.': 90, '|': 80}
     # Loop through thei input a character at a time.
@@ -130,3 +130,4 @@ def compileNFA(infix):
             return None
         else:
             return stack[0]
+
