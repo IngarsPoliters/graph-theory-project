@@ -66,7 +66,7 @@ def compileNFA(infix):
     postfix, stack = shunt(infix), []
     # Loop through the postfix r.e left to right.
     for c in postfix:
-        # Concatenation. Match single characters
+        # Concatenation. Match single characters.
         if c == '.': 
             # Pop top NFA off stack.
             nfa2, stack = stack[-1], stack[:-1]
@@ -79,7 +79,7 @@ def compileNFA(infix):
             # Push both NFAs to the stack.
             stack.append(NFA(nfa1.start, nfa2.end))
 
-        # Or operator. Expressions A or B
+        # Or operator. Expressions A or B.
         elif c == '|': 
             # Pop top NFA off stack.
             nfa2, stack = stack[-1], stack[:-1]
@@ -95,12 +95,28 @@ def compileNFA(infix):
             # Point old end states to new one.
             nfa1.end.arrows.append(end)
             nfa2.end.arrows.append(end)
-            # Push new NFA to the stack
+            # Push new NFA to the stack.
             stack.append(start, end)
 
-        # Kleene star. Concatenate zero or more strings
+        # Kleene star. Concatenate zero or more strings.
         elif c == '*': 
-            # Do stuff
+            # Pop one NFA off stack.
+            nfa1, stack = stack[-1], stack[:-1]
+            # Create new start and end states.
+            start, end = State(None, [],False), State(None, [], True)
+            # Make new start state point at old start state.
+            start.arrows.append(nfa1.start)
+            # And at the new end state.
+            start.arrows.append(end)
+            # Make old end state non-accept.
+            nfa1.end.accept = False
+            # Make old end state point to new end state.
+            nfa1.end.arrows.append(end)
+            # Make old end state point to old start state.
+            nfa1.end.arrows.append(nfa1.start)
+            # Push new NFA to the stack.
+            stack.append(NFA(start, end))
+
         else:
             # Create an NFA for non-specail characters in c.
             # create start and end state.
