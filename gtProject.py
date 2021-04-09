@@ -131,3 +131,10 @@ def compileNFA(infix):
         else:
             return stack[0]
 
+# Test to see if Compile NFA function works as it should.
+if __name__ == "__main__":
+    for infix in ["a.(b.b)*.a", "1.(0.0)*.1", "a|b"]:
+        print(f'infix:      {infix}')
+        print(f'postfix:    {shunt(infix)}')
+        print(f'NFA:        {compileNFA(infix)}')
+        print()
