@@ -40,3 +40,21 @@ def shunt(infix):
         postfix, stack = postfix + stack[-1], stack[:-1]
     # Return the postfix converted from infix
     return postfix
+
+
+# Thompsons Construction.
+class State:
+    """A state and its arrows in Thompsons construction."""
+    def __init__(self, label, arrows, accept):
+        """label is the arrows labels, arrows is a list of states 
+           to point to, accept is a boolean if its an accept state."""
+        self.label = label
+        self.arrows = arrows
+        self.accept = accept
+
+class NFA:
+    """A non-deterministic finite automaton."""
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+        
