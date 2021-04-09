@@ -68,7 +68,17 @@ def compileNFA(infix):
     for c in postfix:
         # Concatenation. Match single characters
         if c == '.': 
-            # Do stuff
+            # Pop top NFA off stack.
+            nfa2, stack = stack[-1], stack[:-1]
+            # Pop the next NFA oof stack.
+            nfa1, stack = stack[-1], stack[:-1]
+            # Make accept state of NFA1 to non-accept.
+            nfa1.end.accept = False
+            # Make it point at start state of NFA2.
+            nfa1.end.arrows.append(nfa2.start)
+            # Push both NFAs to the stack.
+            stack.append(NFA(nfa1.start, nfa2.end))
+
         # Or operator. Expressions A or B
         elif c == '|': 
             # Do stuff
