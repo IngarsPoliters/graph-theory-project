@@ -57,4 +57,28 @@ class NFA:
     def __init__(self, start, end):
         self.start = start
         self.end = end
-        
+
+def compileNFA(infix):
+    """Compile NFA function -> Construct an NFA from the infix expression
+        and return the NFA."""
+    # Convert infix param to postfix.
+    # Create a stack for NFAs.
+    postfix, stack = shunt(infix), []
+    # Loop through the postfix r.e left to right.
+    for c in postfix:
+        # Concatenation. Match single characters
+        if c == '.': 
+            # Do stuff
+        # Or operator. Expressions A or B
+        elif c == '|': 
+            # Do stuff
+        # Kleene star. Concatenate zero or more strings
+        elif c == '*': 
+            # Do stuff
+        else:
+            # Do stuff
+        # The NFA stack should only have one NFA on the stack.
+        if len(stack) != 1:
+            return None
+        else:
+            return stack[0]
