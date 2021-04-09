@@ -81,7 +81,23 @@ def compileNFA(infix):
 
         # Or operator. Expressions A or B
         elif c == '|': 
-            # Do stuff
+            # Pop top NFA off stack.
+            nfa2, stack = stack[-1], stack[:-1]
+            # Pop the next NFA off stack.
+            nfa1, stack = stack[-1], stack[:-1]
+            # Create new start and end states.
+            start, end = State(None, [],False), State(None, [], True)
+            # Make new start state point at old start states.
+            start.arrows.append(nfa1.start)
+            start.arrows.append(nfa2.start)
+            # Make old end states non-accept.
+            nfa1.end.accept, nfa2.end.accept = False
+            # Point old end states to new one.
+            nfa1.end.arrows.append(end)
+            nfa2.end.arrows.append(end)
+            # Push new NFA to the stack
+            stack.append(start, end)
+
         # Kleene star. Concatenate zero or more strings
         elif c == '*': 
             # Do stuff
