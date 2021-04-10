@@ -91,12 +91,12 @@ def compileNFA(infix):
             start.arrows.append(nfa1.start)
             start.arrows.append(nfa2.start)
             # Make old end states non-accept.
-            nfa1.end.accept, nfa2.end.accept = False
+            nfa1.end.accept, nfa2.end.accept = False, False
             # Point old end states to new one.
             nfa1.end.arrows.append(end)
             nfa2.end.arrows.append(end)
             # Push new NFA to the stack.
-            stack.append(start, end)
+            stack.append(NFA(start, end))
 
         # Kleene star. Concatenate zero or more strings.
         elif c == '*': 
@@ -126,10 +126,10 @@ def compileNFA(infix):
             # Append the NFA to the NFA stack.
             stack.append(NFA(start,end))
         # The NFA stack should only have one NFA on the stack.
-        if len(stack) != 1:
-            return None
-        else:
-            return stack[0]
+    if len(stack) != 1:
+        return None
+    else:
+        return stack[0]
 
 # Test to see if Compile NFA function works as it should.
 if __name__ == "__main__":
