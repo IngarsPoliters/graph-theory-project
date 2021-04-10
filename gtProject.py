@@ -3,7 +3,7 @@
 
 # Shunting Yard Algorithm @ https://en.wikipedia.org/wiki/Shunting-yard_algorithm
 def shunt(infix):
-    """Shunt Function - Convert Infix expression to Postfix"""
+    """Shunt Function - Convert Infix regular expression to Postfix"""
     # postfix - The eventual output.
     # stack - The shunting yard operator stack.
     postfix, stack = "", ""
