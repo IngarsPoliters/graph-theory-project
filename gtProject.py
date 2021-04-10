@@ -12,7 +12,7 @@ def shunt(infix):
     # Loop through thei input a character at a time.
     for c in infix:
         # c is an operator
-        if c in {'*','.','|'}:
+        if c in precedence:
             # Check what is on the stack.
             while len(stack) > 0 and stack[-1] != '(' and precedence[stack[-1]] >= precedence[c]:
                 # Append the operator at top of stack to the output.
