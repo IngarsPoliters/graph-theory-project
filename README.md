@@ -25,7 +25,12 @@ python3 gtProject.py
 python gtProject.py
 ```
 ___
-# Regular Expressions
+# Regular Expression
+A regular expression (regex) is a string containing a series of characters, some of the charactrers in regex have a special meaning. For example, the special characters include ```.```, ```|```, ```*```. The meaning for these characters are as follows: 
+* ```.``` To concatenate two characters together, so ```a.b``` means ```a``` followed by ```b```.
+* ```|``` One OR the other, so ```a|b``` means ```a``` OR ```b```.
+* ```*``` To concatenate zero or more, so ```a*``` means any number of ```a``` `s.
+
 
 # Algorithms:
 
@@ -35,6 +40,7 @@ ___
 ___
 # Answers to follwing questions
 * ### What is Regular Expression ?
+Regular Expression, or regex, is extremely powerful in searching and manupulating strings. The concept of Regular Expression arose in the 1950s by an American mathematician named Stephen Cole Kleene in which he formalized the description of a regular language. A regular expression is a string containing a sequence of characters, some of these characters have a special meaning.
 
 * ### How do regular expressions differ across implementations?
 
@@ -61,11 +67,17 @@ Lab References:
 
 * [Thompson's construction in code](https://web.microsoftstream.com/video/4012d43a-bb46-4ceb-8aa9-2ae598539a32)
 
+* [Sketching out the match function](https://web.microsoftstream.com/video/8fe195b7-f7c3-4265-86bc-7ff2c367eee9)
+
+* [NFAs: Code to follow the e arrows](https://web.microsoftstream.com/video/59770e5a-2fed-4575-a4eb-0fd691b77d54)
 
 References:
 
-* https://www.w3schools.com/python/python_regex.asp
-* https://www.w3schools.com/python/python_functions.asp
-* https://en.wikipedia.org/wiki/Thompson%27s_construction
-* https://www.definitions.net/definition/kleene+star
-* https://www.youtube.com/watch?v=RYNN-tb9WxI&t=370s&ab_channel=BarryBrown
+1. To get a better understanding of the RE library in python https://www.w3schools.com/python/python_regex.asp
+2. TO get a better understanding of python functions https://www.w3schools.com/python/python_functions.asp
+3. https://en.wikipedia.org/wiki/Thompson%27s_construction
+4. Kleene Start Definition https://www.definitions.net/definition/kleene+star
+5. Showed me a different perspective behind RE to NFA theory https://www.youtube.com/watch?v=RYNN-tb9WxI&t=370s&ab_channel=BarryBrown
+6. Research on how to make a high quality Readme for github https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+7. Regular Expression Overview https://en.wikipedia.org/wiki/Regular_expression
+8. Research on regular expressions https://www3.ntu.edu.sg/home/ehchua/programming/howto/Regexe.html
