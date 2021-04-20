@@ -35,8 +35,31 @@ A regular expression (regex) is a string containing a series of characters, some
 # Algorithms:
 
 ### Shunting Yard Algorithm
+The shunting yard algorith was invented by Edsger Dijkstra in 1961, who was a Dutch computer scientist.<sup>12</sup> This algorithm is used for converting an infix expression to postfix expression. A stack is used for holding the operators, the purpose of the stack is to reverse the order of the operators in the expression using a last in first out method [LIFO](https://www.freshbooks.com/hub/accounting/what-is-lifo). The stack also serves as a storage structure, for no operator can be printed until both of its operands have appeared.<sup>13</sup> 
+
+An operator precedence is defined to evaluate the priority of the operators as follows:`{'*': 100, '.': 90, '|': 80}`.
+
+To convert an Infix expression to Postfix, using `a.(b.b)*.a` infix expression:
+| Current Symbol | Operator Stack | Postfix String |
+|:--------------:|:--------------:|:--------------:|
+| a |  | a |
+| . | . | a |
+| ( | . ( | a |
+| b | . ( | a b |
+| . | . ( . | a b |
+| b | . ( . | a b b | 
+| ) | . | a b b . |
+| * | . * | a b b . |
+| . | . | a b b . * |
+| a | . | a b b . * . a |
+|  |  | a b b . * . a . |
+
+As you can see the infix expression `a.(b.b)*.a` was converted to postfix expression: `abb.*.a.`.<sup>13</sup>
+
+To see the the psedocode for converting infix to postfix [Go Here](https://aquarchitect.github.io/swift-algorithm-club/Shunting%20Yard/)
 
 ### Thompsons Construction
+
 ___
 # Answers to follwing questions
 * ### What is Regular Expression ?
@@ -117,3 +140,5 @@ References:
 9. [Guide on citing sources for Git README.md](https://github.com/freeCodeCamp/guide/pull/2337/files#diff-230a9052be3f27a5607aea2debfbf534)
 10. [Emerson.emory.edu. 2021. Regular Expressions. Accessed 19 April 2021.](http://www.emerson.emory.edu/services/editors/ne/Regular_Expressions.html)
 11. [Automatetheboringstuff.com. 2021. Automate the Boring Stuff with Python. Accessed 19 April 2021.](https://automatetheboringstuff.com/2e/chapter7/)
+12. [En.wikipedia.org. 2021. Shunting-yard algorithm - Wikipedia. Accessed 20 April 2021.](https://en.wikipedia.org/wiki/Shunting-yard_algorithm)
+13. [Mathcenter.oxford.emory.edu. 2021. The Shunting Yard Algorithm. Accessed 20 April 2021.](http://mathcenter.oxford.emory.edu/site/cs171/shuntingYardAlgorithm/)
