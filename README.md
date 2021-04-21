@@ -35,7 +35,7 @@ A regular expression (regex) is a string containing a series of characters, some
 # Algorithms:
 
 ### Shunting Yard Algorithm
-The shunting yard algorith was invented by Edsger Dijkstra in 1961, who was a Dutch computer scientist.<sup>12</sup> This algorithm is used for converting an infix expression to postfix expression. A stack is used for holding the operators, the purpose of the stack is to reverse the order of the operators in the expression using a last in first out method [LIFO](https://www.freshbooks.com/hub/accounting/what-is-lifo). The stack also serves as a storage structure, for no operator can be printed until both of its operands have appeared.<sup>13</sup> 
+The shunting yard algorith was invented by [Edsger Dijkstra](https://en.wikipedia.org/wiki/Edsger_W._Dijkstra) in 1961, who was a Dutch computer scientist.<sup>12</sup> This algorithm is used for converting an infix expression to postfix expression. A stack is used for holding the operators, the purpose of the stack is to reverse the order of the operators in the expression using a last in first out method [LIFO](https://www.freshbooks.com/hub/accounting/what-is-lifo). The stack also serves as a storage structure, for no operator can be printed until both of its operands have appeared.<sup>13</sup> 
 
 An operator precedence is defined to evaluate the priority of the operators as follows:`{'*': 100, '.': 90, '|': 80}`.
 
@@ -59,7 +59,7 @@ As you can see the infix expression `a.(b.b)*.a` was converted to postfix expres
 To see the the psedocode for converting infix to postfix [Go Here](https://aquarchitect.github.io/swift-algorithm-club/Shunting%20Yard/)
 
 ### Thompsons Construction
-
+Thomposons Construction algorithm was invented by [Ken Thomposn](https://en.wikipedia.org/wiki/Ken_Thompson) in 1960's. This algorithm is used for converting a Postfix expression into a [Non-deterministic Finite Automata](https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton) (NFA). The NFA can be used to match strings against the regular expression.<sup>14</sup>
 ___
 # Answers to follwing questions
 * ### What is Regular Expression ?
@@ -142,3 +142,4 @@ References:
 11. [Automatetheboringstuff.com. 2021. Automate the Boring Stuff with Python. Accessed 19 April 2021.](https://automatetheboringstuff.com/2e/chapter7/)
 12. [En.wikipedia.org. 2021. Shunting-yard algorithm - Wikipedia. Accessed 20 April 2021.](https://en.wikipedia.org/wiki/Shunting-yard_algorithm)
 13. [Mathcenter.oxford.emory.edu. 2021. The Shunting Yard Algorithm. Accessed 20 April 2021.](http://mathcenter.oxford.emory.edu/site/cs171/shuntingYardAlgorithm/)
+14. [En.wikipedia.org. 2021. Thompson's construction - Wikipedia. Accessed 20 April 2021.](https://en.wikipedia.org/wiki/Thompson%27s_construction)
