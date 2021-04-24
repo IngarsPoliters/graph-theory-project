@@ -59,7 +59,45 @@ As you can see the infix expression `a.(b.b)*.a` was converted to postfix expres
 To see the the psedocode for converting infix to postfix [Go Here](https://aquarchitect.github.io/swift-algorithm-club/Shunting%20Yard/)
 
 ### Thompsons Construction
-Thomposons Construction algorithm was invented by [Ken Thomposn](https://en.wikipedia.org/wiki/Ken_Thompson) in 1960's. This algorithm is used for converting a Postfix expression into a [Non-deterministic Finite Automata](https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton) (NFA). The NFA can be used to match strings against the regular expression.<sup>14</sup>
+Thomposons Construction algorithm was invented by [Ken Thomposn](https://en.wikipedia.org/wiki/Ken_Thompson) in 1960's. This algorithm is used for converting a Postfix expression into a [Non-deterministic Finite Automata](https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton) (NFA). The NFA can be used to match strings against the regular expression.<sup>14</sup> It is easy to constuct an NFA than [DFA](https://en.wikipedia.org/wiki/Deterministic_finite_automaton) for a given regular language, the NFA has many paths for specific input from the current state to the next state. Every NFA is not DFA, but each NFA can be translated into DFA, NFA's can be represented by diagraphs called state.<sup>15</sup> In python the classes for NFA and the State are defined using class keywoard. 
+
+The State class has label for the arrows pointing from one state to the other. The arrows are the list of states to point to, the accept is a boolean value if its in the accepted state:
+```python
+class State:
+    def __init__(self, label, arrows, accept):
+        self.label = label
+        self.arrows = arrows
+        self.accept = accept
+```
+
+The NFA class holds a start and end state locations for the state:
+```python
+class NFA:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+```
+The function to compile the NFA from the given expression is defined:
+```python
+def compileNFA(infix):
+    # Construct an NFA from the infix expression
+```
+The `compileNFA(infix)` function will convert the infix epxression to postfix using the shunting yard algorithm, and return the NFA.
+This function has a stack of NFA's, where a for loop is defiend to loop over each character in postfix expression until the expression is complete and if and only if the stack holds one NFA it will be returned.
+
+The stack uses the Last in First Out method. The NFA has 5 simple rules to apply when constructing the NFA from its regular expression. To see the process visually of constructing an NFA see this article [here](https://medium.com/swlh/visualizing-thompsons-construction-algorithm-for-nfas-step-by-step-f92ef378581b)<sup>16</sup>
+
+### Matching Alogrithm
+
+### Followes algorithm
+
+
+### TEST the algorithm and document here 
+
+
+
+
+
 ___
 # Answers to follwing questions
 * ### What is Regular Expression ?
@@ -92,7 +130,6 @@ This is just a small example of what regular expressions can achieve.
 
 We are all familiar `CTRL-F` combination to enter a string to find any matching text. So in comparison Regular Expression engines rise above our favourite `CTRL-F` way of finding text. This will allow you to build a specific expression to search whatever pattern you're looking for. We recognize all kind of text patterns in our everyday lives, such as email addresses will have a single @ symbol in the middle, Irish PPSN numbers have 7 digits followed by a single character, all URL's start either with http:// or https:// and many more. This is how we humans know what is an email address, or a URL, whether it's secure or not.
 Tech writer Cory Doctorow suggests that regular expressions should be taught before programming, to which he adds that knowing regex can save you so much time, to unknowledgeable people it would take 3000 steps to solve a problem, where just by knowing regex you can solve a problem in 3 steps.<sup>11</sup>
-
 
 
 
@@ -143,3 +180,6 @@ References:
 12. [En.wikipedia.org. 2021. Shunting-yard algorithm - Wikipedia. Accessed 20 April 2021.](https://en.wikipedia.org/wiki/Shunting-yard_algorithm)
 13. [Mathcenter.oxford.emory.edu. 2021. The Shunting Yard Algorithm. Accessed 20 April 2021.](http://mathcenter.oxford.emory.edu/site/cs171/shuntingYardAlgorithm/)
 14. [En.wikipedia.org. 2021. Thompson's construction - Wikipedia. Accessed 20 April 2021.](https://en.wikipedia.org/wiki/Thompson%27s_construction)
+15. [www.javatpoint.com. 2021. NFA | Non-Deterministic Finite Automata - Javatpoint. Accessed 24 April 2021.](https://www.javatpoint.com/non-deterministic-finite-automata#:~:text=An%20NFA%20can%20be%20represented%20by%20digraphs%20called%20state%20diagram.&text=The%20initial%20state%20is%20marked,denoted%20by%20the%20double%20circle.)
+16. [Medium. 2021. Visualizing Thompson’s Construction Algorithm for NFAs, step-by-step. Accessed 24 April 2021.](https://medium.com/swlh/visualizing-thompsons-construction-algorithm-for-nfas-step-by-step-f92ef378581b)
+17. 
