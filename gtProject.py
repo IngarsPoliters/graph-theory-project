@@ -20,11 +20,9 @@ def shunt(infix):
                 postfix, stack = postfix + stack[-1], stack[:-1] 
             # Push c to stack.
             stack += c
-            print(f'c = {c}  pofix1 ={postfix}  stack ={stack}')
         elif c == '(':
             # Push c to stack.
             stack += c
-            print(f'c = {c}  pofix1 ={postfix} stack2 ={stack}')
         elif c == ')':
             while stack[-1] != '(':
                 # Append operator at top of stack to output.
@@ -32,11 +30,9 @@ def shunt(infix):
                 postfix, stack = postfix + stack[-1], stack[:-1]
             # Remove open bracket from stack.
             stack = stack[:-1]
-            print(f' c = {c}  pofix3 ={postfix} stack3 ={stack}')
         else:
             # Push it to the output.
             postfix += c
-            print(f' c = {c}  pofix3 ={postfix} stack3 ={stack}')
     # Empty the operator stack.
     while len(stack) != 0:
         # Append operator at top of stack to output.
