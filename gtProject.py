@@ -62,7 +62,7 @@ class State:
         # Include this state in the returned set.
         states = {self}
         # If this tate has e arrows, i.e. label is None.
-        if self.lable is None:
+        if self.label is None:
             # Loop through this state's arrows.
             for state in self.arrows:
                 # Incorporate that state's e arrow states in states.
