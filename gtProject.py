@@ -59,7 +59,16 @@ class State:
     def followes(self):
         """The set of states that are gotten from following this state 
             and all its e (epsilon) arrows."""
-        
+        # Include this state in the returned set.
+        states = {self}
+        # If this tate has e arrows, i.e. label is None.
+        if self.lable is None:
+            # Loop through this state's arrows.
+            for state in self.arrows:
+                # Incorporate that state's e arrow states in states.
+                states = (states | state.followes())
+        # Returns the set of states.
+        return states
 
 class NFA:
     """A non-deterministic finite automaton."""
