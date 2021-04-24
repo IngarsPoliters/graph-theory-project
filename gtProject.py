@@ -69,6 +69,22 @@ class NFA:
 
     def match(self, s):
         """Return True iff this NFA (instance) matches the string s."""
+        # A list of previous states that we are still in.
+        previous = self.start.followes()
+        # Loop throug the string, a character at a time.
+        for c in s:
+            # Start with an empty set of curent states.
+            current = set()
+            # Loop through the previous states.
+            for state in previous:
+                # Check if there is a c arrow from state.
+                if state.label == c:
+                    # Add followees for next state.
+                    current = (current | state.arrows[0].followes())
+            # Replace previous with current.
+            previous = current
+        # If the final state is in previous, then return True. False otherwise.
+        return (self.end in previous)
 
 def compileNFA(infix):
     """Compile NFA function -> Construct an NFA from the infix expression
