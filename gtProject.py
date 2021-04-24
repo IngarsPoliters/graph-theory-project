@@ -174,6 +174,18 @@ if __name__ == "__main__":
              , ["a.(b.b)*.a", ["aa", "abba", "aba"]]
              , ["1.(0.0)*.1", ["11", "100001", "11001"]]
     ]
+
+    for test in tests:
+        infix = test[0]
+        print(f'infix:      {infix}')
+        postfix = shunt(infix)
+        print(f'postfix:    {postfix}')
+        nfa = compileNFA(infix)
+        print(f'NFA:        {nfa}')
+        for s in test[1]:
+            match = nfa.match(s)
+            print(f'Match  "{s}": {match}')
+        print()
     
     # for infix in ["a.(b.b)*.a", "1.(0.0)*.1", "a|b"]:
     #     print(f'infix:      {infix}')
