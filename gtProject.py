@@ -20,9 +20,11 @@ def shunt(infix):
                 postfix, stack = postfix + stack[-1], stack[:-1] 
             # Push c to stack.
             stack += c
+            print(f'c = {c}  pofix1 ={postfix}  stack ={stack}')
         elif c == '(':
             # Push c to stack.
             stack += c
+            print(f'c = {c}  pofix1 ={postfix} stack2 ={stack}')
         elif c == ')':
             while stack[-1] != '(':
                 # Append operator at top of stack to output.
@@ -30,9 +32,11 @@ def shunt(infix):
                 postfix, stack = postfix + stack[-1], stack[:-1]
             # Remove open bracket from stack.
             stack = stack[:-1]
+            print(f' c = {c}  pofix3 ={postfix} stack3 ={stack}')
         else:
             # Push it to the output.
             postfix += c
+            print(f' c = {c}  pofix3 ={postfix} stack3 ={stack}')
     # Empty the operator stack.
     while len(stack) != 0:
         # Append operator at top of stack to output.
@@ -52,11 +56,19 @@ class State:
         self.arrows = arrows
         self.accept = accept
 
+    def followes(self):
+        """The set of states that are gotten from following this state 
+            and all its e (epsilon) arrows."""
+        
+
 class NFA:
     """A non-deterministic finite automaton."""
     def __init__(self, start, end):
         self.start = start
         self.end = end
+
+    def match(self, s):
+        """Return True iff this NFA (instance) matches the string s."""
 
 def compileNFA(infix):
     """Compile NFA function -> Construct an NFA from the infix expression
