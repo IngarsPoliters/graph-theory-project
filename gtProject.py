@@ -1,6 +1,8 @@
 # Graph Theory Project 
 # Ingars Politers - G00374677
 
+import os
+
 # Shunting Yard Algorithm @ https://en.wikipedia.org/wiki/Shunting-yard_algorithm
 def shunt(infix):
     """Shunt Function - Convert Infix regular expression to Postfix"""
@@ -164,12 +166,16 @@ def compileNFA(infix):
     else:
         return stack[0]
 
-def getFile():
-    path = input("Please enter file path: ")
-    print(path)
-    with open(path) as f:
-        contents = f.read()
-    return contents
+def getPath():
+    # Request path of folder from user
+    path = input("Please enter folder path: ")
+    # Check if path has files
+    if len(os.listdir(path)):
+        # Return path if path has files
+        return path
+    else:
+        print("Sorry, there are no files in directory")
+        getPath()
 
 # Test to see if Compile NFA function works as it should.
 if __name__ == "__main__":
@@ -178,17 +184,17 @@ if __name__ == "__main__":
              , ["1.(0.0)*.1", ["11", "100001", "11001"]]
     ]
 
-    contents = getFile()
-    print(contents)
+    path = getPath()
+    print(path)
 
-    for test in tests:
-        infix = test[0]
-        print(f'infix:      {infix}')
-        postfix = shunt(infix)
-        print(f'postfix:    {postfix}')
-        nfa = compileNFA(infix)
-        print(f'NFA:        {nfa}')
-        for s in test[1]:
-            match = nfa.match(s)
-            print(f'Match  "{s}": {match}')
-        print()
+    # for test in tests:
+    #     infix = test[0]
+    #     print(f'infix:      {infix}')
+    #     postfix = shunt(infix)
+    #     print(f'postfix:    {postfix}')
+    #     nfa = compileNFA(infix)
+    #     print(f'NFA:        {nfa}')
+    #     for s in test[1]:
+    #         match = nfa.match(s)
+    #         print(f'Match  "{s}": {match}')
+    #     print()
