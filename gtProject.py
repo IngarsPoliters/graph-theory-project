@@ -204,7 +204,7 @@ def selectFile(path):
 
 def getFile(filepath):
     with open(filepath) as f:
-        contents = f.read()
+        contents = f.read().split()
     f.close()
     return contents
 # Test to see if Compile NFA function works as it should.
@@ -218,6 +218,15 @@ if __name__ == "__main__":
     filepath = selectFile(path)
     contents = getFile(filepath)
     print(contents)
+
+    for test in tests:
+        infix = test[0]
+        print(f'infix:      {infix}')
+        nfa = compileNFA(infix)
+        for text in contents:
+            match = nfa.match(text)
+            print(f'Match "{text}": {match}')
+        print()
 
     # for test in tests:
     #     infix = test[0]
