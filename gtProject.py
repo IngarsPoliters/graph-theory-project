@@ -177,6 +177,31 @@ def getPath():
         print("Sorry, there are no files in directory")
         getPath()
 
+def selectFile(path):
+    # A stack for all the files in folder ending with .txt
+    fileStack = []
+    # Counter to keep track of the file count
+    count = 1
+    for i in os.listdir(path):
+        if i.endswith('.txt'):
+            # Print the counter and the file
+            print(f'{count}) {i}')
+            # Append the file to the fileStack
+            fileStack.append(i)
+            # Add to the counter
+            count += 1
+        else:
+            print("There are no text files in directory")
+    # Get the option from the user.
+    option = int(input())  
+    # If the option is out of bounds, call function recursively
+    if option > len(fileStack):
+        print("Index out of bounds, try again")
+        return selectFile(path)
+    # Else return the filepath
+    else:
+        return os.path.join(path, fileStack[option - 1])
+
 # Test to see if Compile NFA function works as it should.
 if __name__ == "__main__":
     tests = [  ["(a.b|b*)",   ["ab", "b", "bb", "a"]]
@@ -185,7 +210,8 @@ if __name__ == "__main__":
     ]
 
     path = getPath()
-    print(path)
+    filepath = selectFile(path)
+    print(filepath)
 
     # for test in tests:
     #     infix = test[0]
