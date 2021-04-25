@@ -175,7 +175,7 @@ def getPath():
         return path
     else:
         print("Sorry, there are no files in directory")
-        getPath()
+        return getPath()
 
 def selectFile(path):
     # A stack for all the files in folder ending with .txt
@@ -202,6 +202,11 @@ def selectFile(path):
     else:
         return os.path.join(path, fileStack[option - 1])
 
+def getFile(filepath):
+    with open(filepath) as f:
+        contents = f.read()
+    f.close()
+    return contents
 # Test to see if Compile NFA function works as it should.
 if __name__ == "__main__":
     tests = [  ["(a.b|b*)",   ["ab", "b", "bb", "a"]]
@@ -211,7 +216,8 @@ if __name__ == "__main__":
 
     path = getPath()
     filepath = selectFile(path)
-    print(filepath)
+    contents = getFile(filepath)
+    print(contents)
 
     # for test in tests:
     #     infix = test[0]
