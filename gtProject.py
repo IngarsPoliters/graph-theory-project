@@ -164,12 +164,22 @@ def compileNFA(infix):
     else:
         return stack[0]
 
+def getFile():
+    path = input("Please enter file path: ")
+    print(path)
+    with open(path) as f:
+        contents = f.read()
+    return contents
+
 # Test to see if Compile NFA function works as it should.
 if __name__ == "__main__":
     tests = [  ["(a.b|b*)",   ["ab", "b", "bb", "a"]]
              , ["a.(b.b)*.a", ["aa", "abba", "aba"]]
              , ["1.(0.0)*.1", ["11", "100001", "11001"]]
     ]
+
+    contents = getFile()
+    print(contents)
 
     for test in tests:
         infix = test[0]
@@ -182,9 +192,3 @@ if __name__ == "__main__":
             match = nfa.match(s)
             print(f'Match  "{s}": {match}')
         print()
-    
-    # for infix in ["a.(b.b)*.a", "1.(0.0)*.1", "a|b"]:
-    #     print(f'infix:      {infix}')
-    #     print(f'postfix:    {shunt(infix)}')
-    #     print(f'NFA:        {compileNFA(infix)}')
-    #     print()
