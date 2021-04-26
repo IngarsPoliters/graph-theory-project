@@ -217,27 +217,31 @@ def menu():
     print("4) Run internal tests")
     print("5) Exit the program")
 
-# Always read user input
-while True:
+def ui():
+    #define local variables
     infix = ''
 
-    # Get menu 
-    menu()
+    # Always read user input
+    while True:
+        # Get menu 
+        menu()
 
-    # User Prompt
-    user_input = input("✗ ")
+        # User Prompt
+        user_input = input("✗ ")
 
-    # Get infix expression
-    if user_input == '1':
+        # Get infix expression
+        if user_input == '1':
+            infix = input("Enter Infix: ")
+            print(infix)
     
-    if user_input == '2':
+        if user_input == '2':
 
-    if user_input == '3':
-
-    if user_input == '4':
-
-    if user_input == '5':
-        
+        if user_input == '3':
+            print()
+        if user_input == '4':
+            print()
+        if user_input == '5':
+            print()
 
 # Test to see if Compile NFA function works as it should.
 if __name__ == "__main__":
@@ -245,20 +249,6 @@ if __name__ == "__main__":
              , ["a.(b.b)*.a", ["aa", "abba", "aba"]]
              , ["1.(0.0)*.1", ["11", "100001", "11001"]]
     ]
-
-    path = getPath()
-    filepath = selectFile(path)
-    contents = getFile(filepath)
-    print(contents)
-
-    # for test in tests:
-    #     infix = test[0]
-    #     print(f'infix:      {infix}')
-    #     nfa = compileNFA(infix)
-    #     for text in contents:
-    #         match = nfa.match(text)
-    #         print(f'Match "{text}": {match}')
-    #     print()
 
     # for test in tests:
     #     infix = test[0]
