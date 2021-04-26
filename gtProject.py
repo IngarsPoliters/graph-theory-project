@@ -207,6 +207,17 @@ def getFile(filepath):
         contents = f.read().split()
     f.close()
     return contents
+
+
+def menu():
+    print("Please select the following options")
+    print("1) Enter infix regular expression")
+    print("2) Enter a file to match expression")
+    print("3) Enter a custom string to match expression")
+    print("4) Run internal tests")
+    print("5) Exit the program")
+
+
 # Test to see if Compile NFA function works as it should.
 if __name__ == "__main__":
     tests = [  ["(a.b|b*)",   ["ab", "b", "bb", "a"]]
@@ -219,14 +230,14 @@ if __name__ == "__main__":
     contents = getFile(filepath)
     print(contents)
 
-    for test in tests:
-        infix = test[0]
-        print(f'infix:      {infix}')
-        nfa = compileNFA(infix)
-        for text in contents:
-            match = nfa.match(text)
-            print(f'Match "{text}": {match}')
-        print()
+    # for test in tests:
+    #     infix = test[0]
+    #     print(f'infix:      {infix}')
+    #     nfa = compileNFA(infix)
+    #     for text in contents:
+    #         match = nfa.match(text)
+    #         print(f'Match "{text}": {match}')
+    #     print()
 
     # for test in tests:
     #     infix = test[0]
