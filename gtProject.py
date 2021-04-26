@@ -217,6 +217,27 @@ def menu():
     print("4) Run internal tests")
     print("5) Exit the program")
 
+# Always read user input
+while True:
+    infix = ''
+
+    # Get menu 
+    menu()
+
+    # User Prompt
+    user_input = input("✗ ")
+
+    # Get infix expression
+    if user_input == '1':
+    
+    if user_input == '2':
+
+    if user_input == '3':
+
+    if user_input == '4':
+
+    if user_input == '5':
+        
 
 # Test to see if Compile NFA function works as it should.
 if __name__ == "__main__":
