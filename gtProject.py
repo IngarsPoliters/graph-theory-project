@@ -2,6 +2,7 @@
 # Ingars Politers - G00374677
 
 import os
+import sys
 
 # Shunting Yard Algorithm @ https://en.wikipedia.org/wiki/Shunting-yard_algorithm
 def shunt(infix):
@@ -205,7 +206,6 @@ def selectFile(path):
         else:
             return os.path.join(path, fileStack[option - 1])
 
-
 def getFile(filepath):
     with open(filepath) as f:
         contents = f.read().split()
@@ -260,7 +260,8 @@ def ui():
             runTests()
             print()
         if user_input == '3':
-            print()
+            print("Exiting..")
+            sys.exit()
 
 def runTests():
     tests = [  ["(a.b|b*)",   ["ab", "b", "bb", "a"]]
