@@ -167,14 +167,16 @@ def compileNFA(infix):
         return stack[0]
 
 def getPath():
-    # Request path of folder from user
-    path = input("Please enter folder path: ")
-    # Check if path has files
-    if len(os.listdir(path)):
-        # Return path if path has files
-        return path
-    else:
-        print("Sorry, there are no files in directory")
+    while True:
+        # Request path of folder from user
+        path = input("Please enter folder path: ")
+        # Check if path has files
+        if len(os.listdir(path)) == 0:
+            # Return path if path has files
+            print("Sorry, there are no files in directory")
+        else:
+            return path
+
 
 def selectFile(path):
     # A stack for all the files in folder ending with .txt
@@ -200,6 +202,8 @@ def selectFile(path):
     # Else return the filepath
     else:
         return os.path.join(path, fileStack[option - 1])
+
+
 
 def getFile(filepath):
     with open(filepath) as f:
