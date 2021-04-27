@@ -191,18 +191,19 @@ def selectFile(path):
             fileStack.append(i)
             # Add to the counter
             count += 1
-        else:
-            print("There are no text files in directory")
-    # Get the option from the user.
-    option = int(input())  
-    # If the option is out of bounds, call function recursively
-    if option > len(fileStack):
-        print("Index out of bounds, try again")
-        return selectFile(path)
-    # Else return the filepath
+    if len(fileStack) == 0:
+        print("There are no text files in directory")
+        return selectFile(getPath())
     else:
-        return os.path.join(path, fileStack[option - 1])
-
+        # Get the option from the user.
+        option = int(input())  
+        # If the option is out of bounds, call function recursively
+        if option > len(fileStack):
+            print("Index out of bounds, try again")
+            return selectFile(path)
+        # Else return the filepath
+        else:
+            return os.path.join(path, fileStack[option - 1])
 
 
 def getFile(filepath):
