@@ -257,27 +257,29 @@ def ui():
                 print("Wrong Option")
 
         if user_input == '2':
+            runTests()
             print()
         if user_input == '3':
             print()
 
-# Test to see if Compile NFA function works as it should.
-if __name__ == "__main__":
+def runTests():
     tests = [  ["(a.b|b*)",   ["ab", "b", "bb", "a"]]
              , ["a.(b.b)*.a", ["aa", "abba", "aba"]]
              , ["1.(0.0)*.1", ["11", "100001", "11001"]]
     ]
 
-    ui()
+    for test in tests:
+        infix = test[0]
+        print(f'infix:      {infix}')
+        postfix = shunt(infix)
+        print(f'postfix:    {postfix}')
+        nfa = compileNFA(infix)
+        print(f'NFA:        {nfa}')
+        for s in test[1]:
+            match = nfa.match(s)
+            print(f'Match  "{s}": {match}')
+        print()
 
-    # for test in tests:
-    #     infix = test[0]
-    #     print(f'infix:      {infix}')
-    #     postfix = shunt(infix)
-    #     print(f'postfix:    {postfix}')
-    #     nfa = compileNFA(infix)
-    #     print(f'NFA:        {nfa}')
-    #     for s in test[1]:
-    #         match = nfa.match(s)
-    #         print(f'Match  "{s}": {match}')
-    #     print()
+# Test to see if Compile NFA function works as it should.
+if __name__ == "__main__":
+    ui()
