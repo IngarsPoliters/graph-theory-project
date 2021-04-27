@@ -175,7 +175,6 @@ def getPath():
         return path
     else:
         print("Sorry, there are no files in directory")
-        return getPath()
 
 def selectFile(path):
     # A stack for all the files in folder ending with .txt
@@ -208,39 +207,53 @@ def getFile(filepath):
     f.close()
     return contents
 
+def startMatch(infix, contents):
+    nfa = compileNFA(infix)
+    print(contents)
+    for s in contents:
+        match = nfa.match(s)
+        print(f'Match  "{s}": {match}')
+    print()
 
 def menu():
     print("Please select the following options")
     print("1) Enter infix regular expression")
-    print("2) Enter a file to match expression")
-    print("3) Enter a custom string to match expression")
-    print("4) Run internal tests")
-    print("5) Exit the program")
+    print("2) Run internal tests")
+    print("3) Exit the program")
+    # Return user input
+    return input("✗ ")
 
 def ui():
-    #define local variables
-    infix = ''
+    # Define local variables
+    infix, contents = '',[]
 
     # Always read user input
     while True:
         # Get menu 
-        menu()
-
-        # User Prompt
-        user_input = input("✗ ")
+        user_input = menu()
 
         # Get infix expression
         if user_input == '1':
-            infix = input("Enter Infix: ")
-            print(infix)
-    
-        if user_input == '2':
+            infix = input("Enter Infix: ")    
+            print("Enter the following options")
+            print("1) Enter a file to match expression")
+            print("2) Enter a custom string to match expression")
+            option = input("✗ ")
+            if option == '1':
+                path = getPath()
+                fullpath = selectFile(path)
+                contents = getFile(fullpath)
+                startMatch(infix, contents)
+            
+            elif option == '2':
+                contents.append(input("Custom String: "))
+                startMatch(infix, contents)
+            else:
+                print("Wrong Option")
 
+        if user_input == '2':
+            print()
         if user_input == '3':
-            print()
-        if user_input == '4':
-            print()
-        if user_input == '5':
             print()
 
 # Test to see if Compile NFA function works as it should.
@@ -249,6 +262,8 @@ if __name__ == "__main__":
              , ["a.(b.b)*.a", ["aa", "abba", "aba"]]
              , ["1.(0.0)*.1", ["11", "100001", "11001"]]
     ]
+
+    ui()
 
     # for test in tests:
     #     infix = test[0]
