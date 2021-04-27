@@ -28,7 +28,7 @@ python gtProject.py
 # User Guide
 **User Interface**
 
-On running the program the user will be presented with a list of menu options to select:
+On running the program the user will be presented with a list of menu options to select:<br/>
 ![User Options](https://user-images.githubusercontent.com/48323426/116313356-92d7f100-a7a5-11eb-8f24-ebd04814e4b1.PNG)
 
 **File Path**
@@ -37,15 +37,40 @@ To match the infix expression from a file:
 1. Select Option 1
 2. Enter Infix Expression
 
-Here the user will have an option to select the following:
+Here the user will have an option to select the following:<br/>
+![image](https://user-images.githubusercontent.com/48323426/116317148-dda83780-a7aa-11eb-8f97-ef094e79cc2f.png)
 
-![image](https://user-images.githubusercontent.com/48323426/116313747-11cd2980-a7a6-11eb-9e5a-1f59357da8d1.png)
 1. Select Option 1
 2. Enter folder path to scan for text files
 
 Here the folder will be scanned for any text files in the specified directory<br/>
 The user will have an option to select the text file to match the expression:<br/>
 ![image](https://user-images.githubusercontent.com/48323426/116314365-e860cd80-a7a6-11eb-9263-251edf8373a2.png)
+
+On selecting option, the contents will be scanned in, and the results will be displayed for each word in text file:<br/>
+![image](https://user-images.githubusercontent.com/48323426/116317382-2bbd3b00-a7ab-11eb-89f3-9060022960b1.png)
+
+**Custom String**<br/>
+To match the infix expression from a custom string:
+1. Select Option 1
+2. Enter Infix Expression
+
+The user will have an option to select the following:<br/>
+![image](https://user-images.githubusercontent.com/48323426/116317657-88b8f100-a7ab-11eb-93f4-52ae90aadb30.png)
+1. Select Option 2
+2. Enter the custom string to match the expression
+
+Here the string will be matched and the result will be displayed to the user:<br/>
+![image](https://user-images.githubusercontent.com/48323426/116317961-f7964a00-a7ab-11eb-9395-56c7bf2c0ee4.png)
+
+**Testing the code**<br/>
+In the user interface options, on selecting option 2 will display the internal tests for the code.<br/>
+This will validate whether the NFA works as it should, and match the expressions with the tests.<br/>
+![image](https://user-images.githubusercontent.com/48323426/116318314-7a1f0980-a7ac-11eb-9ba6-cdfeac6ab39d.png)
+
+**Exiting the program**<br/>
+To exit the program select option 3 in the menu display.
+
 
 ___
 # Regular Expression
