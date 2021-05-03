@@ -28,7 +28,7 @@ python gtProject.py
 # User Guide
 **User Interface**
 
-On running the program the user will be presented with a list of menu options to select:<br/>
+On running the program, the user will be presented with a list of menu options to select:<br/>
 ![User Options](https://user-images.githubusercontent.com/48323426/116313356-92d7f100-a7a5-11eb-8f24-ebd04814e4b1.PNG)
 
 **File Path**
@@ -60,21 +60,21 @@ The user will have an option to select the following:<br/>
 1. Select Option 2
 2. Enter the custom string to match the expression
 
-Here the string will be matched and the result will be displayed to the user:<br/>
+Here the string will be matched, and the result will be displayed to the user:<br/>
 ![image](https://user-images.githubusercontent.com/48323426/116317961-f7964a00-a7ab-11eb-9395-56c7bf2c0ee4.png)
 
 **Testing the code**<br/>
 In the user interface options, on selecting option 2 will display the internal tests for the code.<br/>
-This will validate whether the NFA works as it should, and match the expressions with the tests.<br/>
+This will validate whether the NFA works as it should and match the expressions with the tests.<br/>
 ![image](https://user-images.githubusercontent.com/48323426/116318314-7a1f0980-a7ac-11eb-9ba6-cdfeac6ab39d.png)
 
 **Exiting the program**<br/>
-To exit the program select option 3 in the menu display.
+To exit the program, select option 3 in the menu display.
 
 
 ___
 # Regular Expression
-A regular expression (regex) is a string containing a series of characters, some of the charactrers in regex have a special meaning. For example, the special characters include ```.```, ```|```, ```*```. The meaning for these characters are as follows: 
+A regular expression (regex) is a string containing a series of characters, some of the characters in regex have a special meaning. For example, the special characters include ```.```, ```|```, ```*```. The meaning for these characters are as follows: 
 * ```.``` To concatenate two characters together, so ```a.b``` means ```a``` followed by ```b```.
 * ```|``` One OR the other, so ```a|b``` means ```a``` OR ```b```.
 * ```*``` To concatenate zero or more, so ```a*``` means any number of ```a``` `s.
@@ -83,7 +83,7 @@ A regular expression (regex) is a string containing a series of characters, some
 # Algorithms:
 
 ### Shunting Yard Algorithm
-The shunting yard algorith was invented by [Edsger Dijkstra](https://en.wikipedia.org/wiki/Edsger_W._Dijkstra) in 1961, who was a Dutch computer scientist.<sup>12</sup> This algorithm is used for converting an infix expression to postfix expression. A stack is used for holding the operators, the purpose of the stack is to reverse the order of the operators in the expression using a last in first out method [LIFO](https://www.freshbooks.com/hub/accounting/what-is-lifo). The stack also serves as a storage structure, for no operator can be printed until both of its operands have appeared.<sup>13</sup> 
+The shunting yard algorithm was invented by [Edsger Dijkstra](https://en.wikipedia.org/wiki/Edsger_W._Dijkstra) in 1961, who was a Dutch computer scientist.<sup>12</sup> This algorithm is used for converting an infix expression to postfix expression. A stack is used for holding the operators, the purpose of the stack is to reverse the order of the operators in the expression using a last in first out method [LIFO](https://www.freshbooks.com/hub/accounting/what-is-lifo). The stack also serves as a storage structure, for no operator can be printed until both of its operands have appeared.<sup>13</sup> 
 
 An operator precedence is defined to evaluate the priority of the operators as follows:`{'*': 100, '.': 90, '|': 80}`.
 
@@ -104,10 +104,10 @@ To convert an Infix expression to Postfix, using `a.(b.b)*.a` infix expression:
 
 As you can see the infix expression `a.(b.b)*.a` was converted to postfix expression: `abb.*.a.`.<sup>13</sup>
 
-To see the the psedocode for converting infix to postfix [Go Here](https://aquarchitect.github.io/swift-algorithm-club/Shunting%20Yard/)
+To see the pseudocode for converting infix to postfix [Go Here](https://aquarchitect.github.io/swift-algorithm-club/Shunting%20Yard/)
 
 ### Thompsons Construction
-Thomposons Construction algorithm was invented by [Ken Thomposn](https://en.wikipedia.org/wiki/Ken_Thompson) in 1960's. This algorithm is used for converting a Postfix expression into a [Non-deterministic Finite Automata](https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton) (NFA). The NFA can be used to match strings against the regular expression.<sup>14</sup> It is easy to constuct an NFA than [DFA](https://en.wikipedia.org/wiki/Deterministic_finite_automaton) for a given regular language, the NFA has many paths for specific input from the current state to the next state. Every NFA is not DFA, but each NFA can be translated into DFA, NFA's can be represented by diagraphs called state.<sup>15</sup> In python the classes for NFA and the State are defined using class keywoard. 
+Thomposon's Construction algorithm was invented by [Ken Thompson](https://en.wikipedia.org/wiki/Ken_Thompson) in 1960's. This algorithm is used for converting a Postfix expression into a [Non-deterministic Finite Automata](https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton) (NFA). The NFA can be used to match strings against the regular expression.<sup>14</sup> It is easy to construct an NFA than [DFA](https://en.wikipedia.org/wiki/Deterministic_finite_automaton) for a given regular language, the NFA has many paths for specific input from the current state to the next state. Every NFA is not DFA, but each NFA can be translated into DFA, NFA's can be represented by diagraphs called state.<sup>15</sup> In python the classes for NFA and the State are defined using class keyword. 
 
 The State class has label for the arrows pointing from one state to the other. The arrows are the list of states to point to, the accept is a boolean value if its in the accepted state:
 ```python
@@ -130,36 +130,25 @@ The function to compile the NFA from the given expression is defined:
 def compileNFA(infix):
     # Construct an NFA from the infix expression
 ```
-The `compileNFA(infix)` function will convert the infix epxression to postfix using the shunting yard algorithm, and return the NFA.
-This function has a stack of NFA's, where a for loop is defiend to loop over each character in postfix expression until the expression is complete and if and only if the stack holds one NFA it will be returned.
+The `compileNFA(infix)` function will convert the infix expression to postfix using the shunting yard algorithm, and return the NFA.
+This function has a stack of NFA's, where a for loop is defined to loop over each character in postfix expression until the expression is complete and if and only if the stack holds one NFA it will be returned.
 
 The stack uses the Last in First Out method. The NFA has 5 simple rules to apply when constructing the NFA from its regular expression. To see the process visually of constructing an NFA see this article [here](https://medium.com/swlh/visualizing-thompsons-construction-algorithm-for-nfas-step-by-step-f92ef378581b)<sup>16</sup>
 
-### Matching Alogrithm
-
-### Followes algorithm
-
-
-### TEST the algorithm and document here 
-
-
-
-
-
 ___
-# Answers to follwing questions
+# Answers to following questions
 * ### What is Regular Expression ?
-Regular Expression, or regex, is extremely powerful in searching and manupulating strings.<sup>8</sup> The concept of Regular Expression arose in the 1950s by an American mathematician named Stephen Cole Kleene in which he formalized the description of a regular language.<sup>7</sup> A regular expression is a string containing a sequence of characters, some of these characters have a special meaning. All non special characters in regular expression match to themselves, e.g. the regex ```a``` matches the character ```'a'``` in a string, regex ```1``` matches ```'1'```. The special characters have their own special meaning in regex. <sup>8</sup> 
+Regular Expression, or regex, is extremely powerful in searching and manipulating  strings.<sup>8</sup> The concept of Regular Expression arose in the 1950s by an American mathematician named Stephen Cole Kleene in which he formalized the description of a regular language.<sup>7</sup> A regular expression is a string containing a sequence of characters, some of these characters have a special meaning. All non-special characters in regular expression match to themselves, e.g. the regex ```a``` matches the character ```'a'``` in a string, regex ```1``` matches ```'1'```. The special characters have their own special meaning in regex. <sup>8</sup> 
 
 To understand some of the meanings behind these special characters see table below:<sup>10</sup>
 
 | Special Character | Character Function | Example | 
 |:-----------------:| ------------------ | ------- |
 | ```.``` | Concatenation, matches anything except a newline | ```a.b``` Matches 3 string char beginning with ```'a'``` and ending with ```'b'``` |
-| ```*``` | Kleene Star, Zero or more occurences of the same character | ```ab*``` Will apply to the ```'b'``` so ```ab*``` will match character ```'a'``` followed by any number of ```'b's``` |
+| ```*``` | Kleene Star, Zero or more occurrences of the same character | ```ab*``` Will apply to the ```'b'``` so ```ab*``` will match character ```'a'``` followed by any number of ```'b's``` |
 | `\|` | Or, specifies 2 alternatives either one or the other expression | ```ab\|dc``` Matches anything containing either ```'ab'``` or ```'dc'```  |
-| `+` | Plus, similar to `*` except this allows at least one occurence or more | `(ab)+` Will match `'aba'` and `'abbba'` but not `'aa'` |
-| `?` | Question Mark, similar to `*` except this allows zero or one occurences | `ab?c` Will match `'abc'` and `'ac'` or nothing at all |
+| `+` | Plus, similar to `*` except this allows at least one occurrence or more | `(ab)+` Will match `'aba'` and `'abbba'` but not `'aa'` |
+| `?` | Question Mark, similar to `*` except this allows zero or one occurrences | `ab?c` Will match `'abc'` and `'ac'` or nothing at all |
 | `(...)`| Parentheses will group expressions together | `(ab\|bc)y` Will match either `'aby'` or `'bcy'` |
 
 Based on these special characters, there are multiple expressions that can be built with this. Here in Ireland/UK we have different spelling differences compared to American spellings. Some of the examples are:
@@ -176,16 +165,25 @@ This can cause some confusion from time to time. So to build a regular expressio
 2. `(Color|Colour)` would apply the same as above, so to substitute the simpler expression would apply as follows `Colou?r`.
 This is just a small example of what regular expressions can achieve.
 
-We are all familiar `CTRL-F` combination to enter a string to find any matching text. So in comparison Regular Expression engines rise above our favourite `CTRL-F` way of finding text. This will allow you to build a specific expression to search whatever pattern you're looking for. We recognize all kind of text patterns in our everyday lives, such as email addresses will have a single @ symbol in the middle, Irish PPSN numbers have 7 digits followed by a single character, all URL's start either with http:// or https:// and many more. This is how we humans know what is an email address, or a URL, whether it's secure or not.
+We are all familiar `CTRL-F` combination to enter a string to find any matching text. So in comparison Regular Expression engines rise above our favourite `CTRL-F` way of finding text. This will allow you to build a specific expression to search whatever pattern you're looking for. We recognize all kind of text patterns in our everyday lives, such as email addresses will have a single @ symbol in the middle, Irish PPSN numbers have 7 digits followed by a single character, all URL's start either with http:// or https:// and many more. This is how we humans know what an email address is, or a URL, whether it's secure or not.
 Tech writer Cory Doctorow suggests that regular expressions should be taught before programming, to which he adds that knowing regex can save you so much time, to unknowledgeable people it would take 3000 steps to solve a problem, where just by knowing regex you can solve a problem in 3 steps.<sup>11</sup>
 
 
-
-
-
-* ### How do regular expressions differ across implementations?
-
 * ### Can all formal languages be encoded as regular expressions?
+A formal language consists of words to which letters are taken from an alphabet and are well formed following a specific set of rules.<sup>17</sup><br/>
+The difference between a formal and informal language is that the grammar is more complex and the sentences are generally longer. e.g.
+* We regret to inform you that the delivery will be delayed due to adverse weather conditions. (Formal)
+* Sorry, but the delivery will be late because of the weather. (Informal) <sup>18</sup>
+
+Formal language is a mathematical construction, to which a programming language is just one of many uses. A formal language is just a manipulation of symbols, where a programming language will have a lexical grammar and a syntactic grammar.
+* Lexical grammar deals with characters such as letters, semicolons, braces, and parentheses. 
+* Syntactic grammar is a set of rules that defines the combinations of symbols that are considered to be correctly structured statements or expressions in that language.<br/>
+
+So that they can be expressed with a regular expression or a DFA or NFA. The lexing phase of the compiler or interpreter is sort of a mini interpreter for the regular language grammar. The rules of the grammar are read and following those rules it adds up individual characters into tokens. e.g. If the language has an `if` statement which exists in most of the programming languages, the lexer might add the characters `i` and `f` into a single token `if`, it then looks for an opening parenthesis and outputs a token `OPEN_PAREN`, then whatever’s between the parenthesis gets handled, and the closing parenthesis is found and outputs a `CLOSE_PAREN` token.
+
+The specifications of programming languages are not context free. e.g. A variable cannot appear if it hasn't been declared in many languages., and languages with strict typing might not allow you to assign an integer to a string value, to which a parser's job is only to convert the raw code into a form which is easier to process.<sup>19</sup>
+
+
 ___
 # References
 Lab References:
@@ -230,4 +228,6 @@ References:
 14. [En.wikipedia.org. 2021. Thompson's construction - Wikipedia. Accessed 20 April 2021.](https://en.wikipedia.org/wiki/Thompson%27s_construction)
 15. [www.javatpoint.com. 2021. NFA | Non-Deterministic Finite Automata - Javatpoint. Accessed 24 April 2021.](https://www.javatpoint.com/non-deterministic-finite-automata#:~:text=An%20NFA%20can%20be%20represented%20by%20digraphs%20called%20state%20diagram.&text=The%20initial%20state%20is%20marked,denoted%20by%20the%20double%20circle.)
 16. [Medium. 2021. Visualizing Thompson’s Construction Algorithm for NFAs, step-by-step. Accessed 24 April 2021.](https://medium.com/swlh/visualizing-thompsons-construction-algorithm-for-nfas-step-by-step-f92ef378581b)
-17. 
+17. [En.wikipedia.org. 2021. Formal language - Wikipedia. Accessed 27 April 2021.](https://en.wikipedia.org/wiki/Formal_language)
+18. [Londonschool.com. 2021. 10 differences between formal and informal language. Accessed 27 April 2021.](https://www.londonschool.com/blog/10-differences-between-formal-and-informal-language/)
+19. [What is the Relationship Between Programming Languages, R. and Filmus, Y., 2021. What is the Relationship Between Programming Languages, Regular Expressions and Formal Languages.  Accessed 27 April 2021.](https://cs.stackexchange.com/questions/30639/what-is-the-relationship-between-programming-languages-regular-expressions-and#:~:text=Formal%20languages%20are%20syntax%20without%20meaning.&text=Regular%20expression%20and%20other%20formalisms,sentences%20in%20a%20structured%20way.)
